@@ -4,12 +4,15 @@
 	<p>Atsushi Okamoto`s Portfolio</p>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
 	<script src="js/controls/OrbitControls.js"></script>
+	<script src="js/Detector.js"></script>
 	<script>
 	// ページの読み込みを待つ
 window.addEventListener('load', init);
 function init() {
+	//WebGL非対応時の処理
+	if(!Detector.webgl) Detector.addGetWebGLMessage();
 	// サイズを指定
-	const width = window.innerWidth - 5;
+	const width = window.innerWidth - 10;
 	const height = window.innerHeight - 60;
 	// レンダラーを作成
 	const renderer = new THREE.WebGLRenderer({
@@ -35,15 +38,9 @@ function init() {
 	// 形状とマテリアルからメッシュを作成
 	const tetra = new THREE.Mesh(
 		new THREE.TetrahedronGeometry(300),
-		new THREE.MeshPhongMaterial({color:0x6699ff})
+		new THREE.MeshBasicMaterial({color:0x6699ff})
 	);
 	scene.add(tetra);
-/*	const surfaces = [//面の法線ベクトル
-	new THREE.Vector3(0,0,1),
-	new THREE.Vector3(),
-	new THREE.Vector3(),
-	new THREE.Vector3()
-	];*/
 	tick();
 	// OrbitControls設定
 	controls.enableDamping = true;
