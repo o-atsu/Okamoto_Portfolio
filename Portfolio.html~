@@ -1,0 +1,65 @@
+﻿<html>
+<head>
+	<meta charset="utf-8" />
+	<p>Atsushi Okamoto`s Portfolio</p>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
+	<script src="js/controls/OrbitControls.js"></script>
+	<script>
+	// ページの読み込みを待つ
+window.addEventListener('load', init);
+function init() {
+	// サイズを指定
+	const width = window.innerWidth - 5;
+	const height = window.innerHeight - 60;
+	// レンダラーを作成
+	const renderer = new THREE.WebGLRenderer({
+		canvas: document.querySelector('#myCanvas'),
+		antialias:true
+	});
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(width, height);
+	// シーンを作成
+	const scene = new THREE.Scene();
+	// カメラを作成
+	const camera = new THREE.PerspectiveCamera(45, width / height);
+	camera.position.set(0, 0, +1000);
+	const controls = new THREE.OrbitControls(camera);
+	controls.enablePan = false;
+	//光源を生成
+	const directionalLight1 = new THREE.DirectionalLight(0xffffff);
+	directionalLight1.position.set(1, 1, 1);
+	scene.add(directionalLight1);
+	const directionalLight2 = new THREE.DirectionalLight(0xffffff);
+	directionalLight2.position.set(1, -1, -1);
+	scene.add(directionalLight2);
+	// 形状とマテリアルからメッシュを作成
+	const tetra = new THREE.Mesh(
+		new THREE.TetrahedronGeometry(300),
+		new THREE.MeshPhongMaterial({color:0x6699ff})
+	);
+	scene.add(tetra);
+/*	const surfaces = [//面の法線ベクトル
+	new THREE.Vector3(0,0,1),
+	new THREE.Vector3(),
+	new THREE.Vector3(),
+	new THREE.Vector3()
+	];*/
+	tick();
+	// OrbitControls設定
+	controls.enableDamping = true;
+	controls.dampingFactor = 0.9;
+	// 毎フレーム時に実行されるループイベント
+	function tick() {
+		controls.update();
+		// レンダリング
+		renderer.render(scene, camera);
+		requestAnimationFrame(tick);
+		//カメラ位置によって面を特定
+	}
+}
+	</script>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+</html>
