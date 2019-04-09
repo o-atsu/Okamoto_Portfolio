@@ -16,7 +16,7 @@ function init() {
 
 	// サイズを指定
 	const width = window.innerWidth - 10;
-	const height = window.innerHeight - 60;
+	const height = window.innerHeight - 150;
 
 	// レンダラーを作成
 	const renderer = new THREE.WebGLRenderer({
@@ -52,13 +52,7 @@ function init() {
 	scene.add(tetra);
 
 
-	//マウス座標取得、-1から1に正規化
-	var mouseX = -1, mouseY = -1;
-	document.addEventListener('mousemove', function(e){
-		mouseX = (e.clientX / width) * 2 - 1;
-		mouseY = (e.clientY / height) * -2 + 1;
-	}, false);
-
+	
 	// OrbitControls設定
 	controls.enableDamping = true;
 	controls.dampingFactor = 0.9;
@@ -70,28 +64,25 @@ function init() {
 		// レンダリング
 		renderer.render(scene, camera);
 		requestAnimationFrame(tick);
-
-		//マウスの指す座標にオブジェクトがあるかどうか
-		var projector = new THREE.Projector();
-		var pos = new Vector3(mouseX, mouseY, -1);
-		var ray = projector.pickingRay(pos, camera);
-		var intersects = ray.intersectObjects(scene.children);
-
-		//マウスがmesh上時の処理
-		if(intersects.length > 0 && intersects[0].object == tetra){
-			tetra.material = new THREE.MeshNormalMaterial();
-			controls.enabled = false;
-		}else{
-			tetra.material = new THREE.MeshPhongMaterial({color:0x6699ff})
-			controls.enabled = true;
-		}
 	}
 	tick();
 }
-
+//マウス座標取得
+window.onload=function(){
+	var mouseX = -1, mouseY = -1;
+	document.body.addEventListener('mousemove', function(e){
+		mouseX = e.pageX;
+		mouseY = e.pageY;
+		//表示
+		document.getElementById("txtX").value = mouseX;
+		document.getElementById("txtY").value = mouseY;
+	});
+}
 	</script>
 </head>
 <body>
     <canvas id="myCanvas"></canvas>
+    X座標：<input type="text" id="txtX" />
+    Y座標：<input type="text" id="txtY" />
 </body>
 </html>
