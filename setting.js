@@ -80,21 +80,16 @@ function init() {
 		requestAnimationFrame(tick);
 	}
 	tick();
-	//マウス位置取得
-	var mouseX = -1, mouseY = -1;
-	document.addEventListener("mousemove", function(e){
-		mouseX = e.pageX;
-		mouseY = e.pageY;
-
-		//表示に代入
-		document.getElementById("txtX").value = mouseX;
-		document.getElementById("txtY").value = mouseY;
-	});
 
 	//ボタン処理
 	var btn = document.getElementById('btn');
 	btn.addEventListener('click', function(){
-		console.log('clicked!');
+		//法線ベクトルとカメラ位置の内積が一定以上なら処理
+		var cameraPos = camera.position.clone();
+		var dotWith1 = cameraPos.normalize().dot(face1.normalize());
+		var dotWith2 = cameraPos.normalize().dot(face2.normalize());
+		var dotWith3 = cameraPos.normalize().dot(face3.normalize());
+		var dotWith4 = cameraPos.normalize().dot(face4.normalize());
+
 	}, false);
 }
-
