@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
 	<meta charset="utf-8" />
-	<p>Atsushi Okamoto`s Portfolio</p>
+	<p>Atsushi Okamoto</p>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
 	<script src="js/controls/OrbitControls.js"></script>
 	<script src="js/Detector.js"></script>
@@ -12,9 +12,12 @@
 	</script>
 </head>
 <body>
-    <canvas id="myCanvas"></canvas>
-    X座標：<input type="text" id="txtX" />
-    Y座標：<input type="text" id="txtY" />
+	<canvas id="myCanvas"></canvas>
+	X座標：<input type="text" id="txtX" />
+	Y座標：<input type="text" id="txtY" />
+	<form name="open">
+		<input type="button" value="Open" name="btn">
+	</form>
 
 </body>
 </html>

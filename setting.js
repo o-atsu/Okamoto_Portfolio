@@ -40,10 +40,10 @@ function init() {
 		new THREE.TetrahedronGeometry(300),
 		new THREE.MeshPhongMaterial({color:0x6699ff})
 	);
-	var face1 = new THREE.Vecror3(1, -1, 1);//正四面体の法線ベクトル
-	var face1 = new THREE.Vecror3(-1, 1, 1);
-	var face1 = new THREE.Vecror3(1, 1, -1);
-	var face1 = new THREE.Vecror3(-1, -1, -1);
+	var face1 = new THREE.Vector3(1, -1, 1);//正四面体の法線ベクトル
+	var face2 = new THREE.Vector3(-1, 1, 1);
+	var face3 = new THREE.Vector3(1, 1, -1);
+	var face4 = new THREE.Vector3(-1, -1, -1);
 	scene.add(tetra);
 
 	//向き確認用
@@ -90,5 +90,11 @@ function init() {
 		document.getElementById("txtX").value = mouseX;
 		document.getElementById("txtY").value = mouseY;
 	});
+
+	//ボタン処理
+	var btn = document.getElementById('btn');
+	btn.addEventListener('click', function(){
+		console.log('clicked!');
+	}, false);
 }
 
