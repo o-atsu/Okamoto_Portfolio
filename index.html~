@@ -7,7 +7,18 @@
 	<script src="js/Detector.js"></script>
 	<script src="setting.js"></script>
     <script>
+    //マウス座標取得
+window.onload=function(){
+	var mouseX = -1, mouseY = -1;
+	document.addEventListener("mousemove", function(e){
+		mouseX = e.pageX;
+		mouseY = e.pageY;
 
+		//表示に代入
+		document.getElementById("txtX").value = mouseX;
+		document.getElementById("txtY").value = mouseY;
+	});
+}
 
 	</script>
 </head>
