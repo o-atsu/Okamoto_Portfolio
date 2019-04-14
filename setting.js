@@ -40,8 +40,31 @@ function init() {
 		new THREE.TetrahedronGeometry(300),
 		new THREE.MeshPhongMaterial({color:0x6699ff})
 	);
-	
+	var face1 = new THREE.Vecror3(1, -1, 1);//正四面体の法線ベクトル
+	var face1 = new THREE.Vecror3(-1, 1, 1);
+	var face1 = new THREE.Vecror3(1, 1, -1);
+	var face1 = new THREE.Vecror3(-1, -1, -1);
 	scene.add(tetra);
+
+	//向き確認用
+	var sphereX = new THREE.Mesh(//青
+		new THREE.SphereGeometry(5, 32, 32),
+		new THREE.MeshBasicMaterial({color:0x0000ff})
+	);
+	var sphereY = new THREE.Mesh(//赤
+		new THREE.SphereGeometry(5, 32, 32),
+		new THREE.MeshBasicMaterial({color:0xff0000})
+	);
+	var sphereZ = new THREE.Mesh(//緑
+		new THREE.SphereGeometry(5, 32, 32),
+		new THREE.MeshBasicMaterial({color:0x00ff00})
+	);
+	sphereX.position.set(300, 0, 0);
+	sphereY.position.set(0, 300, 0);
+	sphereZ.position.set(0, 0, 300);
+	scene.add(sphereX);
+	scene.add(sphereY);
+	scene.add(sphereZ);
 
 	// OrbitControls設定
 	controls.enableDamping = true;
@@ -57,9 +80,7 @@ function init() {
 		requestAnimationFrame(tick);
 	}
 	tick();
-}
-    //マウス座標取得
-window.onload=function(){
+	//マウス位置取得
 	var mouseX = -1, mouseY = -1;
 	document.addEventListener("mousemove", function(e){
 		mouseX = e.pageX;
@@ -70,3 +91,4 @@ window.onload=function(){
 		document.getElementById("txtY").value = mouseY;
 	});
 }
+
