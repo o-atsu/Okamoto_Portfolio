@@ -91,5 +91,10 @@ function init() {
 		var dotWith3 = cameraPos.normalize().dot(face3.normalize());
 		var dotWith4 = cameraPos.normalize().dot(face4.normalize());
 
+		if(dotWith1 > 0.6) console.log('1');
+		if(dotWith2 > 0.6) console.log('2');
+		if(dotWith3 > 0.6) console.log('3');
+		if(dotWith4 > 0.6) console.log('4');
+
 	}, false);
 }
