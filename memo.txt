@@ -1,0 +1,3 @@
+chromeで他ファイルを読み込む場合
+コマンドプロンプトから
+chrome.exe --allow-file-access-from-files

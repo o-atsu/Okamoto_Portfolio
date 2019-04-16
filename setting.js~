@@ -40,11 +40,56 @@ function init() {
 		new THREE.TetrahedronGeometry(300),
 		new THREE.MeshPhongMaterial({color:0x6699ff})
 	);
-	var face1 = new THREE.Vector3(1, -1, 1);//正四面体の法線ベクトル
-	var face2 = new THREE.Vector3(-1, 1, 1);
-	var face3 = new THREE.Vector3(1, 1, -1);
-	var face4 = new THREE.Vector3(-1, -1, -1);
+	var face1 = new THREE.Vector3(1, -1, 1).normalize();//正四面体の法線単位ベクトル
+	var face2 = new THREE.Vector3(-1, 1, 1).normalize();
+	var face3 = new THREE.Vector3(1, 1, -1).normalize();
+	var face4 = new THREE.Vector3(-1, -1, -1).normalize();
 	scene.add(tetra);
+
+	//テキスト作成
+	var loader = new THREE.FontLoader();//https://gero3.github.io/facetype.js/を使おう
+	loader.load('fonts/helvetiker_regular.typeface.json', function(font){
+		var faceText1 = new THREE.Mesh(
+			new THREE.TextGeometry("PROFILE",{
+				font: font,
+				size: 30,
+				height: 5,
+				curveSegments: 12}),
+				new THREE.MeshBasicMaterial({color:0xffffff}));
+		faceText1.position.set(100, -100, 200);
+		faceText1.rotation.set(Math.PI/6, Math.PI/4, -Math.PI/8);
+		scene.add(faceText1);
+		var faceText2 = new THREE.Mesh(
+			new THREE.TextGeometry("APPS",{
+				font: font,
+				size: 30,
+				height: 5,
+				curveSegments: 12}),
+				new THREE.MeshBasicMaterial({color:0xffffff}));
+		faceText2.position.set(-160, 100, 100);
+		faceText2.rotation.set(-Math.PI/6, -Math.PI/4, -Math.PI/8);
+		scene.add(faceText2);
+		var faceText3 = new THREE.Mesh(
+			new THREE.TextGeometry("MODELS",{
+				font: font,
+				size: 30,
+				height: 5,
+				curveSegments: 12}),
+				new THREE.MeshBasicMaterial({color:0xffffff}));
+		faceText3.position.set(200, 100, -100);
+		faceText3.rotation.set(Math.PI/6, Math.PI*3/4, -Math.PI/8);
+		scene.add(faceText3);
+		var faceText4 = new THREE.Mesh(
+			new THREE.TextGeometry("CONTACT",{
+				font: font,
+				size: 30,
+				height: 5,
+				curveSegments: 12}),
+				new THREE.MeshBasicMaterial({color:0xffffff}));
+		faceText4.position.set(-100, -100, -200);
+		faceText4.rotation.set(-Math.PI/6, -Math.PI*3/4, -Math.PI/8);
+		scene.add(faceText4);
+	});
 
 	//向き確認用
 	var sphereX = new THREE.Mesh(//青
@@ -86,10 +131,15 @@ function init() {
 	btn.addEventListener('click', function(){
 		//法線ベクトルとカメラ位置の内積が一定以上なら処理
 		var cameraPos = camera.position.clone();
-		var dotWith1 = cameraPos.normalize().dot(face1.normalize());
-		var dotWith2 = cameraPos.normalize().dot(face2.normalize());
-		var dotWith3 = cameraPos.normalize().dot(face3.normalize());
-		var dotWith4 = cameraPos.normalize().dot(face4.normalize());
+		var dotWith1 = cameraPos.normalize().dot(face1);
+		var dotWith2 = cameraPos.normalize().dot(face2);
+		var dotWith3 = cameraPos.normalize().dot(face3);
+		var dotWith4 = cameraPos.normalize().dot(face4);
+
+		if(dotWith1 > 0.4) console.log('1');
+		if(dotWith2 > 0.4) console.log('2');
+		if(dotWith3 > 0.4) console.log('3');
+		if(dotWith4 > 0.4) console.log('4');
 
 	}, false);
 }
