@@ -136,19 +136,15 @@ function init() {
 		var dotWith4 = cameraPos.normalize().dot(face4);
 
 		if(dotWith1 > 0.7){
-			console.log('profile');
 			window.location.href = 'profile.html';
 		}
 		if(dotWith2 > 0.7){
-			console.log('apps');
 			window.location.href = 'apps.html';
 		}
 		if(dotWith3 > 0.7){
-			console.log('models');
 			window.location.href = 'models.html';
 		}
 		if(dotWith4 > 0.7){
-			console.log('contact');
 			window.location.href = 'contact.html';
 		}
 	}, false);
