@@ -1,0 +1,19 @@
+window.addEventListener('load', init);
+function init(){
+	if(!Detector.webgl) Detector.addGetWebGLMessage();
+	const width = window.innerWidth - 10;
+	const height = window.innerHeight - 300;
+	const renderer = new THREE.WebGLRenderer({
+		canvas: document.querySelector('#myCanvas'),
+		antialias:true
+	});
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(width, height);
+	const scene = new THREE.Scene();
+	var camera = new THREE.PerspectiveCamera(45, width / height);
+	camera.position.set(0, 0, +1000);
+
+	//ライト
+	//ポイント円
+	//各紹介テクスチャ
+}

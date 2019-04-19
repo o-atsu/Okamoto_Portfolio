@@ -119,7 +119,6 @@ function init() {
 	function tick() {
 		controls.update();
 
-
 		// ƒŒƒ“ƒ_ƒŠƒ“ƒO
 		renderer.render(scene, camera);
 		requestAnimationFrame(tick);
@@ -136,10 +135,21 @@ function init() {
 		var dotWith3 = cameraPos.normalize().dot(face3);
 		var dotWith4 = cameraPos.normalize().dot(face4);
 
-		if(dotWith1 > 0.4) console.log('profile');
-		if(dotWith2 > 0.4) console.log('apps');
-		if(dotWith3 > 0.4) console.log('models');
-		if(dotWith4 > 0.4) console.log('contact');
-
+		if(dotWith1 > 0.7){
+			console.log('profile');
+			window.location.href = 'profile.html';
+		}
+		if(dotWith2 > 0.7){
+			console.log('apps');
+			window.location.href = 'apps.html';
+		}
+		if(dotWith3 > 0.7){
+			console.log('models');
+			window.location.href = 'models.html';
+		}
+		if(dotWith4 > 0.7){
+			console.log('contact');
+			window.location.href = 'contact.html';
+		}
 	}, false);
 }
