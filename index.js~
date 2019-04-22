@@ -55,7 +55,7 @@ function init() {
 				size: 35,
 				height: 2,
 				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText1.position.set(100, -100, 200);
 		faceText1.rotation.set(Math.PI/6, Math.PI/4, -Math.PI/8);
 		scene.add(faceText1);
@@ -65,7 +65,7 @@ function init() {
 				size: 35,
 				height: 2,
 				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText2.position.set(-160, 100, 100);
 		faceText2.rotation.set(-Math.PI/6, -Math.PI/4, -Math.PI/8);
 		scene.add(faceText2);
@@ -75,7 +75,7 @@ function init() {
 				size: 35,
 				height: 2,
 				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText3.position.set(200, 100, -100);
 		faceText3.rotation.set(Math.PI/6, Math.PI*3/4, -Math.PI/8);
 		scene.add(faceText3);
@@ -85,31 +85,11 @@ function init() {
 				size: 35,
 				height: 2,
 				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText4.position.set(-100, -100, -200);
 		faceText4.rotation.set(-Math.PI/6, -Math.PI*3/4, -Math.PI/8);
 		scene.add(faceText4);
 	});
-
-	//Œü‚«Šm”F—p
-	var sphereX = new THREE.Mesh(//Â
-		new THREE.SphereGeometry(5, 32, 32),
-		new THREE.MeshBasicMaterial({color:0x0000ff})
-	);
-	var sphereY = new THREE.Mesh(//Ô
-		new THREE.SphereGeometry(5, 32, 32),
-		new THREE.MeshBasicMaterial({color:0xff0000})
-	);
-	var sphereZ = new THREE.Mesh(//—Î
-		new THREE.SphereGeometry(5, 32, 32),
-		new THREE.MeshBasicMaterial({color:0x00ff00})
-	);
-	sphereX.position.set(300, 0, 0);
-	sphereY.position.set(0, 300, 0);
-	sphereZ.position.set(0, 0, 300);
-	scene.add(sphereX);
-	scene.add(sphereY);
-	scene.add(sphereZ);
 
 	// OrbitControlsÝ’è
 	controls.enableDamping = true;
@@ -136,19 +116,15 @@ function init() {
 		var dotWith4 = cameraPos.normalize().dot(face4);
 
 		if(dotWith1 > 0.7){
-			console.log('profile');
 			window.location.href = 'profile.html';
 		}
 		if(dotWith2 > 0.7){
-			console.log('apps');
 			window.location.href = 'apps.html';
 		}
 		if(dotWith3 > 0.7){
-			console.log('models');
 			window.location.href = 'models.html';
 		}
 		if(dotWith4 > 0.7){
-			console.log('contact');
 			window.location.href = 'contact.html';
 		}
 	}, false);

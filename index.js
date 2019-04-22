@@ -54,8 +54,9 @@ function init() {
 				font: font,
 				size: 35,
 				height: 2,
-				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+				curveSegments: 12
+			}),
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText1.position.set(100, -100, 200);
 		faceText1.rotation.set(Math.PI/6, Math.PI/4, -Math.PI/8);
 		scene.add(faceText1);
@@ -64,8 +65,9 @@ function init() {
 				font: font,
 				size: 35,
 				height: 2,
-				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+				curveSegments: 12
+			}),
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText2.position.set(-160, 100, 100);
 		faceText2.rotation.set(-Math.PI/6, -Math.PI/4, -Math.PI/8);
 		scene.add(faceText2);
@@ -74,8 +76,9 @@ function init() {
 				font: font,
 				size: 35,
 				height: 2,
-				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+				curveSegments: 12
+			}),
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText3.position.set(200, 100, -100);
 		faceText3.rotation.set(Math.PI/6, Math.PI*3/4, -Math.PI/8);
 		scene.add(faceText3);
@@ -84,32 +87,13 @@ function init() {
 				font: font,
 				size: 35,
 				height: 2,
-				curveSegments: 12}),
-				new THREE.MeshBasicMaterial({color:0xffffff}));
+				curveSegments: 12
+			}),
+			new THREE.MeshBasicMaterial({color:0xffffff}));
 		faceText4.position.set(-100, -100, -200);
 		faceText4.rotation.set(-Math.PI/6, -Math.PI*3/4, -Math.PI/8);
 		scene.add(faceText4);
 	});
-
-	//å¸Ç´ämîFóp
-	var sphereX = new THREE.Mesh(//ê¬
-		new THREE.SphereGeometry(5, 32, 32),
-		new THREE.MeshBasicMaterial({color:0x0000ff})
-	);
-	var sphereY = new THREE.Mesh(//ê‘
-		new THREE.SphereGeometry(5, 32, 32),
-		new THREE.MeshBasicMaterial({color:0xff0000})
-	);
-	var sphereZ = new THREE.Mesh(//óŒ
-		new THREE.SphereGeometry(5, 32, 32),
-		new THREE.MeshBasicMaterial({color:0x00ff00})
-	);
-	sphereX.position.set(300, 0, 0);
-	sphereY.position.set(0, 300, 0);
-	sphereZ.position.set(0, 0, 300);
-	scene.add(sphereX);
-	scene.add(sphereY);
-	scene.add(sphereZ);
 
 	// OrbitControlsê›íË
 	controls.enableDamping = true;
