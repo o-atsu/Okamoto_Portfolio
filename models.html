@@ -1,17 +1,21 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="UTF-8" />
 	<p>MODELS</p>
 </head>
 <body>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
 	<script src="js/Detector.js"></script>
-	<script src="models.js"></script>
-	<script src="js/utils/GeometryUtils.js"></script>
-	<script type="text/javascript" src="fonts/helvetiker_regular.typeface.json"></script>
-
+	<script src="models.js" charset="UTF-8"></script>
+	<script src="js/loaders/VRMLoader.js"></script>
+	<script src="js/loaders/GLTFLoader.js"></script>
+	<script src="js/controls/OrbitControls.js"></script>
 	<canvas id="myCanvas"></canvas>
+
+	<button id="Uchi"><font size="5">Uchi</font></button>
+	<button id="SugumiV"><font size="5">Sugumi_Voxel</font></button>
+	<div id="textArea">Push Botton to Road a Model</div>
 </body>
 </html>

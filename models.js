@@ -13,38 +13,47 @@ function init(){
 	var camera = new THREE.PerspectiveCamera(45, width / height);
 	camera.position.set(0, 0, +1000);
 
+	//OrbitControls
+	var controls = new THREE.OrbitControls(camera, myCanvas);
+	controls.center = new THREE.Vector3(0, 0, 0);
+	controls.enableDamping = true;
+	controls.dampingFactor = 0.9;
+
 	//ライト
-	const light = new THREE.DirectionalLight(0xffffff);
-	light.position.set(1, 1, 1,);
+	const light = new THREE.AmbientLight(0xffffff, 0.8);
 	scene.add(light);
 	
-	//レイキャスタ
-	var projector = new THREE.Projector();
-	var mouse = {x:0, y:0};
-	canvas.addEventListener('mousemove', pointing, false);
-	function pointing(e){
-		const element = e.currentTarget;
-		mouse.x = ((e.clientX - e.offsetLeft) / width)*2-1;
-		mouse.y = ((e.clientY - e.offsetTop) / height)*2+1;
+	//VRMLoader
+	var loader = new THREE.VRMLoader();
 
-	}
-	const raycaster = new THREE.Raycaster();
 
-	//ポイント球
-	
-	//各紹介テクスチャ
-	
+	//毎フレーム処理
 	tick();
 	function tick(){
-		//レイキャスト
-		raycaster.setFromCamera(mouse, camera);
-		const intersects = raycaster.intersectObjects(scene.children);
-		if(intersects.length > 0){
-			//ぶつかったものはintersects内
-		}
-
+		controls.update();
 		renderer.render(scene, camera);
 		requestAnimationFrame(tick);
 	}
+
+	//ボタン処理
+	var btnUchi = document.getElementById('Uchi');
+	var btnSugumiV = document.getElementById('SugumiV');
+	var textArea = document.getElementById('textArea');
+	btnUchi.addEventListener('click', function(){
+		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nTo get experiences about Vroid Studio\nAbout\nShe is designed only by my feeling. (I have no skills...)\n......I may remake her......"
+	loader.load('models/vrm/atsu.vrm', function(vrm){
+		//追加処理
+		scene.add(hoge);
+	});
+	}, false);
+	btnSugumiV.addEventListener('click', function(){
+		textArea.innerText = "Sugumi_Voxel\nMade with\tMagicaVoxel(mesh), Blender(bone setting)\nPurpose\nTo live in VRChat and get experiences about setting humanoid rig\nAbout\nThrough her, I realised that I like modeling with low polygons. But, modeling low-poly-models is quite difficult because of its unbalances. Let's make Voxel models!";
+	loader.load('models/vrm/sugumi.vrm', function(vrm){
+		//追加処理
+		scene.add(hoge);
+	});
+	}, false);
+
+	
 
 }
