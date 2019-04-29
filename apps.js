@@ -14,7 +14,7 @@ function init(){
 	camera.position.set(0, 0, +1000);
 
 	//ライト
-	const light = new THREE.AmbientLight(0xffffff);
+	const light = new THREE.AmbientLight(0xffffff, 1.0);
 	light.position.set(1, 1, 1,);
 	scene.add(light);
 	
@@ -30,9 +30,10 @@ function init(){
 	}
 	const raycaster = new THREE.Raycaster();
 
-	//ポイント球
 	
-	//各紹介テクスチャ
+	//各紹介ボックス
+	var loader = new THREE.TextureLoader();
+	loader.load('', function(texture){});
 	
 	tick();
 	function tick(){
