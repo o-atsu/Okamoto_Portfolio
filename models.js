@@ -11,7 +11,7 @@ function init(){
 	renderer.setSize(width, height);
 	const scene = new THREE.Scene();
 	var camera = new THREE.PerspectiveCamera(45, width / height);
-	camera.position.set(0, 0, +1000);
+	camera.position.set(0, 2, -2);
 
 	//OrbitControls
 	var controls = new THREE.OrbitControls(camera, myCanvas);
@@ -75,7 +75,7 @@ function init(){
 	} );
 	}, false);
 	btnSugumiV.addEventListener('click', function(){
-		textArea.innerText = "Sugumi_Voxel\nMade with\tMagicaVoxel(mesh), Blender(bone setting)\nPurpose\nTo live in VRChat and get experiences about setting humanoid rig\nAbout\nThrough her, I realised that I like modeling with low polygons. But, modeling low-poly-models is quite difficult because of its unbalances. Let's make Voxel models!";
+		textArea.innerText = "Sugumi_Voxel\nMade with\tMagicaVoxel(mesh), Blender(bone setting)\nPurpose\nTo live in VRChat and get experiences about setting humanoid rig\nAbout\nThrough her, I realised that I like modeling with low polygons. But, modeling low-poly-models is quite difficult because of its unbalances. Let's make Voxel models!\nOh... fuckin' big.";
 	loader.load( 'models/vrm/sugumi.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
