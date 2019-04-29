@@ -20,7 +20,7 @@ function init(){
 	controls.dampingFactor = 0.9;
 
 	//ƒ‰ƒCƒg
-	const light = new THREE.AmbientLight(0xffffff, 0.8);
+	const light = new THREE.AmbientLight(0xFFFFFF, 1.0);
 	scene.add(light);
 	
 	//VRMLoader
@@ -40,7 +40,7 @@ function init(){
 	var btnSugumiV = document.getElementById('SugumiV');
 	var textArea = document.getElementById('textArea');
 	btnUchi.addEventListener('click', function(){
-		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nTo get experiences about Vroid Studio\nAbout\nShe is designed only by my feeling. (I have no skills...)\n......I may remake her......"
+		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nTo get experiences about VRoid Studio\nAbout\nShe is designed only by my feeling. (I have no skills...)\n......I may remake her......"
 	loader.load( 'models/vrm/atsu.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.

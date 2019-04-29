@@ -6,12 +6,14 @@
 </head>
 <body>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/103/three.js"></script>
 	<script src="js/Detector.js"></script>
 	<script src="models.js" charset="UTF-8"></script>
 	<script src="js/loaders/VRMLoader.js"></script>
 	<script src="js/loaders/GLTFLoader.js"></script>
 	<script src="js/controls/OrbitControls.js"></script>
+	<script src="models/vrm/atsu.vrm"></script>
+	<script src="models/vrm/sugumi.vrm"></script>
 	<canvas id="myCanvas"></canvas>
 
 	<button id="Uchi"><font size="5">Uchi</font></button>

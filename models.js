@@ -20,7 +20,7 @@ function init(){
 	controls.dampingFactor = 0.9;
 
 	//ƒ‰ƒCƒg
-	const light = new THREE.AmbientLight(0xffffff, 0.8);
+	const light = new THREE.AmbientLight(0xffffff, 1.0);
 	scene.add(light);
 	
 	//VRMLoader
