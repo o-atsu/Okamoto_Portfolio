@@ -10,59 +10,61 @@ function init(){
 	renderer.setSize(width, height);
 	const scene = new THREE.Scene();
 	var camera = new THREE.PerspectiveCamera(45, width / height);
-	camera.position.set(0, 0, 2000);
+	camera.position.set(0, 0, 800);
 
 	//ライト
-	const light = new THREE.AmbientLight(0xffffff, 1.0);
+	const light = new THREE.DirectionalLight(0xffffff, 1.0);
+	light.position.set(1,1,1);
 	scene.add(light);
 	
 	//レイキャスタ
 	var projector = new THREE.Projector();
 	var mouse = {x:0, y:0};
-	window.addEventListener('mousemove', pointing, false);
-	function pointing(e){
-		const element = e.currentTarget;
-		mouse.x = ((e.clientX - e.offsetLeft) / width)*2-1;
-		mouse.y = ((e.clientY - e.offsetTop) / height)*2+1;
-
-	}
 	const raycaster = new THREE.Raycaster();
 
-	
 	//各紹介ボックス
 	var loader = new THREE.TextureLoader();
 	loader.load('textures/BunboguFight!!!_tex.png', function(texture){
 		var bunboguFight = new THREE.Mesh(
-			new THREE.BoxGeometry(1024, 1024, 1024),
+			new THREE.BoxGeometry(200, 200, 200),
 			new THREE.MeshBasicMaterial({map: texture}));
-		bunboguFight.position.set(100, 200, 100);
+		bunboguFight.position.set(125, 70, 100);
+		bunboguFight.name = "bunboguFight";
 		scene.add(bunboguFight);
 	});
 	
 	loader.load('textures/gassaku_tex.png', function(texture){
 		var gassaku = new THREE.Mesh(
-			new THREE.BoxGeometry(300, 300, 300),
+			new THREE.BoxGeometry(200, 200, 200),
 			new THREE.MeshBasicMaterial({map: texture}));
-		gassaku.position.set(-100, -100, 100);
+		gassaku.position.set(-125, -70, 100);
+		gassaku.name = "gassaku";
 		scene.add(gassaku);
 	});
-
-	tick();
-	function tick(){
-		//レイキャスト
+	//レイキャスト
+	window.addEventListener('click', function(e){
+		mouse.x = (e.clientX / width)*2-1;
+		mouse.y = - (e.clientY / height)*2+1;
 		raycaster.setFromCamera(mouse, camera);
+		console.log(mouse.x);
+		console.log(mouse.y);
 		var intersects = raycaster.intersectObjects(scene.children);
-		if(intersects.length > 0 && mesh === intersects[0].object){
+		if(intersects.length > 0){
 			//ぶつかったものはintersects内
-			if(intersects[0].object.name == bunboguFight){
-				window.addEventListener('mousedown', function(e){
+			if(intersects[0].object.name == "bunboguFight"){
 					window.location.href = 'https://github.com/o-atsu/Bunbogu_Fight';
-				}, false);
+			}
+			if(intersects[0].object.name == "gassaku"){
+					window.location.href = 'https://github.com/o-atsu/gassaku';
+			}
 		}
 
+	}, false);
+	tick();
+	function tick(){
+		
 		renderer.render(scene, camera);
 		requestAnimationFrame(tick);
 	}
+}
 
-}
-}

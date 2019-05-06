@@ -7,7 +7,6 @@
 <body>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.js"></script>
-	<script src="">
 	<script src="js/renderers/Projector.js"></script>
 	<script src="apps.js"></script>
 	<script src="js/utils/GeometryUtils.js"></script>
