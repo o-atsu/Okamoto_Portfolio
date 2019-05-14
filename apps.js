@@ -50,10 +50,10 @@ function init(){
 		if(intersects.length > 0){
 			//‚Ô‚Â‚©‚Á‚½‚à‚Ì‚Íintersects“à
 			if(intersects[0].object.name == "bunboguFight"){
-					window.location.href = 'https://github.com/o-atsu/Bunbogu_Fight';
+					window.location.href = 'BunboguFight!!!_webgl/index.html';
 			}
 			if(intersects[0].object.name == "gassaku"){
-					window.location.href = 'https://github.com/o-atsu/gassaku';
+					window.location.href = 'gassaku_webgl/index.html';
 			}
 		}
 
