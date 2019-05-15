@@ -19,7 +19,7 @@ function init(){
 	controls.enableDamping = true;
 	controls.dampingFactor = 0.9;
 
-	//���C�g
+	//ライト
 	const light = new THREE.AmbientLight(0xffffff, 1.0);
 	scene.add(light);
 	
@@ -27,7 +27,7 @@ function init(){
 	var loader = new THREE.VRMLoader();
 
 
-	//���t���[������
+	//毎フレーム処理
 	tick();
 	function tick(){
 		controls.update();
@@ -35,12 +35,14 @@ function init(){
 		requestAnimationFrame(tick);
 	}
 
-	//�{�^������
+	//ボタン処理
 	var btnUchi = document.getElementById('Uchi');
-	var btnSugumiV = document.getElementById('SugumiV');
+	var btnSugumiVoxel = document.getElementById('SugumiVoxel');
+	var btnSugumiVroid = document.getElementById('SugumiVroid');	
 	var textArea = document.getElementById('textArea');
+	
 	btnUchi.addEventListener('click', function(){
-		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nTo get experiences about VRoid Studio\nAbout\nShe is designed only by my feeling. (I have no skills...)\n......I may remake her......"
+		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nVRoid Studioでモデルを作りたかったため\nAbout\nキャラデザは感情に任せました。スキルがほしい（切実）\n作り直そうかなぁ......"
 	loader.load( 'models/vrm/atsu.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
@@ -74,9 +76,46 @@ function init(){
 	scene.add( vrm.scene );
 	} );
 	}, false);
-	btnSugumiV.addEventListener('click', function(){
-		textArea.innerText = "Sugumi_Voxel\nMade with\tMagicaVoxel(mesh), Blender(bone setting)\nPurpose\nTo live in VRChat and get experiences about setting humanoid rig\nAbout\nThrough her, I realised that I like modeling with low polygons. But, modeling low-poly-models is quite difficult because of its unbalances. Let's make Voxel models!\nOh... fuckin' big.";
+	
+	btnSugumiVoxel.addEventListener('click', function(){
+		textArea.innerText = "Sugumi_Voxel\nくっそでけぇ、、、\nMade with\tMagicaVoxel(メッシュ), Blender(ボーン設定)\nPurpose\nVRChatで生活するため、また、ボーンの設定やってみたかった\nAbout\nこの娘作って気づいたんだが自分はローポリモデルが好きなんだなあ、みんなもボクセルモデル作ろう！\n"
 	loader.load( 'models/vrm/sugumi.vrm', function ( vrm ) {
+	// VRMLoader doesn't support VRM Unlit extension yet so
+	// converting all materials to MeshBasicMaterial here as workaround so far.
+	vrm.scene.traverse( function ( object ) {
+		if ( object.material ) {
+			if ( Array.isArray( object.material ) ) {
+				for ( var i = 0, il = object.material.length; i < il; i ++ ) {
+					var material = new THREE.MeshBasicMaterial();
+					THREE.Material.prototype.copy.call( material, object.material[ i ] );
+					material.color.copy( object.material[ i ].color );
+					material.map = object.material[ i ].map;
+					material.lights = false;
+					material.skinning = object.material[ i ].skinning;
+					material.morphTargets = object.material[ i ].morphTargets;
+					material.morphNormals = object.material[ i ].morphNormals;
+					object.material[ i ] = material;
+				}
+			} else {
+				var material = new
+				THREE.MeshBasicMaterial();
+				THREE.Material.prototype.copy.call( material, object.material );
+				material.color.copy( object.material.color );
+				material.map = object.material.map;
+				material.lights = false; material.skinning = object.material.skinning;                 
+				material.morphTargets = object.material.morphTargets;
+				material.morphNormals = object.material.morphNormals;
+				object.material = material;
+			}
+		}
+	} );
+	scene.add( vrm.scene );
+	} );
+	}, false);
+	
+	btnSugumiVroid.addEventListener('click', function(){
+		textArea.innerText = "Sugumi_vroid\nMade with\tVroid Studio\nPurpose\nVRアプリ開発のテストに使うため、また、バーチャル住人の姿\nAbout\n新キャラを作りたかったがデザインが思いつかずボクセルモデルをもとにした。まあ使い分けができてちょうどよいのでは\n"
+	loader.load( 'models/vrm/sugumi_vroid.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
 	vrm.scene.traverse( function ( object ) {
