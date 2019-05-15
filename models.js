@@ -115,7 +115,7 @@ function init(){
 	
 	btnSugumiVroid.addEventListener('click', function(){
 		textArea.innerText = "Sugumi_vroid\nMade with\tVroid Studio\nPurpose\nVRアプリ開発のテストに使うため、また、バーチャル住人の姿\nAbout\n新キャラを作りたかったがデザインが思いつかずボクセルモデルをもとにした。まあ使い分けができてちょうどよいのでは\n"
-	loader.load( 'models/vrm/sugumi_vroid.vrm', function ( vrm ) {
+	loader.load( 'models/vrm/Sugumi_vroid.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
 	vrm.scene.traverse( function ( object ) {
