@@ -9,7 +9,7 @@ function init(){
 	});
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(width, height);
-	const scene = new THREE.Scene();
+	var scene = new THREE.Scene();
 	var camera = new THREE.PerspectiveCamera(45, width / height);
 	camera.position.set(0, 2, -2);
 
@@ -36,12 +36,15 @@ function init(){
 	}
 
 	//ボタン処理
+	var theremodel = false;
 	var btnUchi = document.getElementById('Uchi');
 	var btnSugumiVoxel = document.getElementById('SugumiVoxel');
 	var btnSugumiVroid = document.getElementById('SugumiVroid');	
 	var textArea = document.getElementById('textArea');
 	
 	btnUchi.addEventListener('click', function(){
+		if(theremodel){ scene = new THREE.Scene();}
+		theremodel = true;
 		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nVRoid Studioでモデルを作りたかったため\nAbout\nキャラデザは感情に任せました。スキルがほしい（切実）\n作り直そうかなぁ......"
 	loader.load( 'models/vrm/atsu.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
@@ -78,6 +81,8 @@ function init(){
 	}, false);
 	
 	btnSugumiVoxel.addEventListener('click', function(){
+		if(theremodel){ scene = new THREE.Scene();}
+		theremodel = true;
 		textArea.innerText = "Sugumi_Voxel\nくっそでけぇ、、、\nMade with\tMagicaVoxel(メッシュ), Blender(ボーン設定)\nPurpose\nVRChatで生活するため、また、ボーンの設定やってみたかった\nAbout\nこの娘作って気づいたんだが自分はローポリモデルが好きなんだなあ、みんなもボクセルモデル作ろう！\n"
 	loader.load( 'models/vrm/sugumi.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
@@ -114,6 +119,8 @@ function init(){
 	}, false);
 	
 	btnSugumiVroid.addEventListener('click', function(){
+		if(theremodel){ scene = new THREE.Scene();}
+		theremodel = true;
 		textArea.innerText = "Sugumi_vroid\nMade with\tVroid Studio\nPurpose\nVRアプリ開発のテストに使うため、また、バーチャル住人の姿\nAbout\n新キャラを作りたかったがデザインが思いつかずボクセルモデルをもとにした。まあ使い分けができてちょうどよいのでは\n"
 	loader.load( 'models/vrm/Sugumi_vroid.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
