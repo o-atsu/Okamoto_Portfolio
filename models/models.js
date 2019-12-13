@@ -1,4 +1,4 @@
-window.addEventListener('load', init);
+﻿window.addEventListener('load', init);
 function init(){
 	if(!Detector.webgl) Detector.addGetWebGLMessage();
 	const width = window.innerWidth - 10;

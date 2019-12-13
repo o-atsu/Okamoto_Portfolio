@@ -1,33 +1,33 @@
-	// ƒy[ƒW‚Ì“Ç‚Ýž‚Ý‚ð‘Ò‚Â
+	// ãƒšãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿ã‚’å¾…ã¤
 window.addEventListener('load', init);
 function init() {
 
-	//WebGL”ñ‘Î‰žŽž‚Ìˆ—
+	//WebGLéžå¯¾å¿œæ™‚ã®å‡¦ç†
 	if(!Detector.webgl) Detector.addGetWebGLMessage();
 
-	// ƒTƒCƒY‚ðŽw’è
-	const width = window.innerWidth - 10;
-	const height = window.innerHeight - 300;
-
-	// ƒŒƒ“ƒ_ƒ‰[‚ðì¬
+	// ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã‚’ä½œæˆ
 	const renderer = new THREE.WebGLRenderer({
 		canvas: document.querySelector('#myCanvas'),
 		antialias:true
 	});
+
+	// ã‚µã‚¤ã‚ºã‚’æŒ‡å®š
+	const width = window.innerWidth;
+	const height = window.innerHeight;
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(width, height);
 
-	// ƒV[ƒ“‚ðì¬
+	// ã‚·ãƒ¼ãƒ³ã‚’ä½œæˆ
 	const scene = new THREE.Scene();
 
-	// ƒJƒƒ‰‚ðì¬
-	var camera = new THREE.PerspectiveCamera(45, width / height);
+	// ã‚«ãƒ¡ãƒ©ã‚’ä½œæˆ
+	const camera = new THREE.PerspectiveCamera(45, width / height);
 	camera.position.set(0, 0, +1000);
-	var controls = new THREE.OrbitControls(camera, myCanvas);
+	const controls = new THREE.OrbitControls(camera, myCanvas);
 	controls.center= new THREE.Vector3(0, 0, 0);
 	controls.enablePan = false;
 
-	//ŒõŒ¹‚ð¶¬
+	//å…‰æºã‚’ç”Ÿæˆ
 	const directionalLight1 = new THREE.DirectionalLight(0xffffff);
 	directionalLight1.position.set(1, 1, 1);
 	scene.add(directionalLight1);
@@ -35,21 +35,21 @@ function init() {
 	directionalLight2.position.set(1, -1, -1);
 	scene.add(directionalLight2); 
 
-	// ³Žl–Ê‘Ì¶¬
-	var tetra = new THREE.Mesh(
+	// æ­£å››é¢ä½“ç”Ÿæˆ
+	const tetra = new THREE.Mesh(
 		new THREE.TetrahedronGeometry(300),
 		new THREE.MeshPhongMaterial({color:0x6699ff})
 	);
-	var face1 = new THREE.Vector3(1, -1, 1).normalize();//³Žl–Ê‘Ì‚Ì–@ü’PˆÊƒxƒNƒgƒ‹
-	var face2 = new THREE.Vector3(-1, 1, 1).normalize();
-	var face3 = new THREE.Vector3(1, 1, -1).normalize();
-	var face4 = new THREE.Vector3(-1, -1, -1).normalize();
+	const face1 = new THREE.Vector3(1, -1, 1).normalize();//æ­£å››é¢ä½“ã®æ³•ç·šå˜ä½ãƒ™ã‚¯ãƒˆãƒ«
+	const face2 = new THREE.Vector3(-1, 1, 1).normalize();
+	const face3 = new THREE.Vector3(1, 1, -1).normalize();
+	const face4 = new THREE.Vector3(-1, -1, -1).normalize();
 	scene.add(tetra);
 
-	//ƒeƒLƒXƒgì¬
-	var loader = new THREE.FontLoader();//https://gero3.github.io/facetype.js/‚ðŽg‚¨‚¤
+	//ãƒ†ã‚­ã‚¹ãƒˆä½œæˆ
+	const loader = new THREE.FontLoader();//https://gero3.github.io/facetype.js/ã‚’ä½¿ãŠã†
 	loader.load('fonts/helvetiker_regular.typeface.json', function(font){
-		var faceText1 = new THREE.Mesh(
+		const faceText1 = new THREE.Mesh(
 			new THREE.TextGeometry("PROFILE",{
 				font: font,
 				size: 35,
@@ -60,7 +60,7 @@ function init() {
 		faceText1.position.set(100, -100, 200);
 		faceText1.rotation.set(Math.PI/6, Math.PI/4, -Math.PI/8);
 		scene.add(faceText1);
-		var faceText2 = new THREE.Mesh(
+		const faceText2 = new THREE.Mesh(
 			new THREE.TextGeometry("APPS",{
 				font: font,
 				size: 35,
@@ -71,7 +71,7 @@ function init() {
 		faceText2.position.set(-160, 100, 100);
 		faceText2.rotation.set(-Math.PI/6, -Math.PI/4, -Math.PI/8);
 		scene.add(faceText2);
-		var faceText3 = new THREE.Mesh(
+		const faceText3 = new THREE.Mesh(
 			new THREE.TextGeometry("MODELS",{
 				font: font,
 				size: 35,
@@ -82,7 +82,7 @@ function init() {
 		faceText3.position.set(200, 100, -100);
 		faceText3.rotation.set(Math.PI/6, Math.PI*3/4, -Math.PI/8);
 		scene.add(faceText3);
-		var faceText4 = new THREE.Mesh(
+		const faceText4 = new THREE.Mesh(
 			new THREE.TextGeometry("CONTACT",{
 				font: font,
 				size: 35,
@@ -95,41 +95,52 @@ function init() {
 		scene.add(faceText4);
 	});
 
-	// OrbitControlsÝ’è
+	// OrbitControlsè¨­å®š
 	controls.enableDamping = true;
 	controls.dampingFactor = 0.9;
 
-	// –ˆƒtƒŒ[ƒ€Žž‚ÉŽÀs‚³‚ê‚éƒ‹[ƒvƒCƒxƒ“ƒg
+	//ãƒœã‚¿ãƒ³å‡¦ç†
+	let bprf = document.getElementById('prf');
+	bprf.addEventListener('click', function(){
+		window.location.href = 'profile/profile.html';
+	}, false);
+
+	const cnvsdb = document.getElementById('myCanvas');
+	let dotWith1 = cameraPos.normalize().dot(face1);
+	let dotWith2 = cameraPos.normalize().dot(face2);
+	let dotWith3 = cameraPos.normalize().dot(face3);
+	let dotWith4 = cameraPos.normalize().dot(face4);
+	cnvsdb.addEventListener('dblclick', function(){
+		//æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã¨ã‚«ãƒ¡ãƒ©ä½ç½®ã®å†…ç©ãŒä¸€å®šä»¥ä¸Šãªã‚‰å‡¦ç†
+		const cameraPos = camera.position.clone();
+		dotWith1 = cameraPos.normalize().dot(face1);
+		dotWith2 = cameraPos.normalize().dot(face2);
+		dotWith3 = cameraPos.normalize().dot(face3);
+		dotWith4 = cameraPos.normalize().dot(face4);
+			if(dotWith1 > 0.7){
+			window.location.href = 'profile/profile.html';
+		}
+		if(dotWith2 > 0.7){
+			window.location.href = 'apps/apps.html';
+		}
+		if(dotWith3 > 0.7){
+			window.location.href = 'models/models.html';
+		}
+		if(dotWith4 > 0.7){
+			window.location.href = 'contact/contact.html';
+		}
+	}, false);
+
+	// æ¯Žãƒ•ãƒ¬ãƒ¼ãƒ æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹ãƒ«ãƒ¼ãƒ—ã‚¤ãƒ™ãƒ³ãƒˆ
 	function tick() {
 		controls.update();
 
-		// ƒŒƒ“ƒ_ƒŠƒ“ƒO
+		// ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°
 		renderer.render(scene, camera);
 		requestAnimationFrame(tick);
 	}
 	tick();
-
-	//ƒ{ƒ^ƒ“ˆ—
-	var btn = document.getElementById('btn');
-	btn.addEventListener('click', function(){
-		//–@üƒxƒNƒgƒ‹‚ÆƒJƒƒ‰ˆÊ’u‚Ì“àÏ‚ªˆê’èˆÈã‚È‚çˆ—
-		var cameraPos = camera.position.clone();
-		var dotWith1 = cameraPos.normalize().dot(face1);
-		var dotWith2 = cameraPos.normalize().dot(face2);
-		var dotWith3 = cameraPos.normalize().dot(face3);
-		var dotWith4 = cameraPos.normalize().dot(face4);
-
-		if(dotWith1 > 0.7){
-			window.location.href = 'profile.html';
-		}
-		if(dotWith2 > 0.7){
-			window.location.href = 'apps.html';
-		}
-		if(dotWith3 > 0.7){
-			window.location.href = 'models.html';
-		}
-		if(dotWith4 > 0.7){
-			window.location.href = 'contact.html';
-		}
-	}, false);
 }
+
+
+
