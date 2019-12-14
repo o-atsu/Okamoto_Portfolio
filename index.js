@@ -126,8 +126,7 @@ function init() {
 	let dotWith2;
 	let dotWith3;
 	let dotWith4;
-//	cnvsdb.addEventListener('dblclick', function(){
-	cnvsdb.addEventListener('touchstart', function(){
+	function enter(){
 		//法線ベクトルとカメラ位置の内積が一定以上なら処理
 		let cameraPos = camera.position.clone();
 		dotWith1 = cameraPos.normalize().dot(face1);
@@ -146,7 +145,9 @@ function init() {
 		if(dotWith4 > 0.7){
 			window.location.href = 'contact/contact.html';
 		}
-	}, false);
+	}
+	cnvsdb.addEventListener('dblclick', enter);
+	cnvsdb.addEventListener('touchend', enter);
 
 	// 毎フレーム時に実行されるループイベント
 	function tick() {
