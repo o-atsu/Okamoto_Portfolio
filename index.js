@@ -126,7 +126,8 @@ function init() {
 	let dotWith2;
 	let dotWith3;
 	let dotWith4;
-	cnvsdb.addEventListener('dblclick', function(){
+//	cnvsdb.addEventListener('dblclick', function(){
+	cnvsdb.addEventListener('touchstart', function(){
 		//法線ベクトルとカメラ位置の内積が一定以上なら処理
 		let cameraPos = camera.position.clone();
 		dotWith1 = cameraPos.normalize().dot(face1);

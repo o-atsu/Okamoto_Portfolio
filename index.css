@@ -2,7 +2,7 @@ head{
 	color:#000000;
 }
 button.home{
-	font: italic 32px expanded;
+	font: italic 34px expanded;
 	color:#ddddff;
 	background-color:#000000;
 	border:none;
@@ -11,8 +11,9 @@ button.tab{
 	font: 30px expanded;
 	background-color:#000000;
 	color:#ddddff;
+	float:right;
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: ridge #6699ff
+	border-bottom: ridge 5px #6699ff
 }
