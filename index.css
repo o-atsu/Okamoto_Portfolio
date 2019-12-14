@@ -8,5 +8,11 @@ button.home{
 	border:none;
 }
 button.tab{
-	
+	font: 16px expanded;
+	background-color:#000000;
+	color:#ddddff;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: ridge #6699ff
 }

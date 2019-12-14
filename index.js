@@ -100,19 +100,35 @@ function init() {
 	controls.dampingFactor = 0.9;
 
 	//ボタン処理
-	let bprf = document.getElementById('prf');
+	const bhome = document.getElementById('home');
+	bhome.addEventListener('click', function(){
+		window.location.href = 'index.html';
+	}, false);
+	const bprf = document.getElementById('prf');
 	bprf.addEventListener('click', function(){
 		window.location.href = 'profile/profile.html';
 	}, false);
+	const bapp = document.getElementById('app');
+	bapp.addEventListener('click', function(){
+		window.location.href = 'apps/apps.html';
+	}, false);
+	const bmdl = document.getElementById('mdl');
+	bmdl.addEventListener('click', function(){
+		window.location.href = 'models/models.html';
+	}, false);
+	const bcnt = document.getElementById('cnt');
+	bcnt.addEventListener('click', function(){
+		window.location.href = 'contact/contact.html';
+	}, false);
 
 	const cnvsdb = document.getElementById('myCanvas');
-	let dotWith1 = cameraPos.normalize().dot(face1);
-	let dotWith2 = cameraPos.normalize().dot(face2);
-	let dotWith3 = cameraPos.normalize().dot(face3);
-	let dotWith4 = cameraPos.normalize().dot(face4);
+	let dotWith1;
+	let dotWith2;
+	let dotWith3;
+	let dotWith4;
 	cnvsdb.addEventListener('dblclick', function(){
 		//法線ベクトルとカメラ位置の内積が一定以上なら処理
-		const cameraPos = camera.position.clone();
+		let cameraPos = camera.position.clone();
 		dotWith1 = cameraPos.normalize().dot(face1);
 		dotWith2 = cameraPos.normalize().dot(face2);
 		dotWith3 = cameraPos.normalize().dot(face3);
