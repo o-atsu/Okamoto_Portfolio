@@ -1,0 +1,45 @@
+head{
+	color:#000000;
+}
+button.home{
+	cursor:pointer;
+	font: italic 34px expanded;
+	color:#ddddff;
+	background:#000000;
+	border:none;
+}
+button.tab{
+	cursor:pointer;
+	font: 30px expanded;
+	width:120px;
+	background-color:#000000;
+	color:#ddddff;
+	float:right;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: ridge 5px #6699ff;
+	transition-property: box-shadow;
+	transition-duration:0.5s;
+	transition-timing-function:ease-out;
+}
+button.tab:hover{
+	box-shadow:5px 5px inset;
+}
+
+button.now{
+	cursor:pointer;
+	font: 30px expanded;
+	width:120px;
+	background-color:#000000;
+	color:#ddddff;
+	float:right;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: ridge 5px #6699ff;
+	box-shadow:5px 5px inset;
+}
+div.text{
+	border:double 4px #eedd88;
+}

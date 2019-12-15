@@ -12,19 +12,19 @@ function init(){
 	var camera = new THREE.PerspectiveCamera(45, width / height);
 	camera.position.set(0, 0, 800);
 
-	//ƒ‰ƒCƒg
+	//ãƒ©ã‚¤ãƒˆ
 	const light = new THREE.DirectionalLight(0xffffff, 1.0);
 	light.position.set(1,1,1);
 	scene.add(light);
 	
-	//ƒŒƒCƒLƒƒƒXƒ^
+	//ãƒ¬ã‚¤ã‚­ãƒ£ã‚¹ã‚¿
 	var projector = new THREE.Projector();
 	var mouse = {x:0, y:0};
 	const raycaster = new THREE.Raycaster();
 
-	//ŠeĞ‰îƒ{ƒbƒNƒX
+	//å„ç´¹ä»‹ãƒœãƒƒã‚¯ã‚¹
 	var loader = new THREE.TextureLoader();
-	loader.load('textures/BunboguFight!!!_tex.png', function(texture){
+	loader.load('../textures/BunboguFight!!!_tex.png', function(texture){
 		var bunboguFight = new THREE.Mesh(
 			new THREE.BoxGeometry(200, 200, 200),
 			new THREE.MeshBasicMaterial({map: texture}));
@@ -33,7 +33,7 @@ function init(){
 		scene.add(bunboguFight);
 	});
 	
-	loader.load('textures/gassaku_tex.png', function(texture){
+	loader.load('../textures/gassaku_tex.png', function(texture){
 		var gassaku = new THREE.Mesh(
 			new THREE.BoxGeometry(200, 200, 200),
 			new THREE.MeshBasicMaterial({map: texture}));
@@ -41,19 +41,42 @@ function init(){
 		gassaku.name = "gassaku";
 		scene.add(gassaku);
 	});
-	//ƒŒƒCƒLƒƒƒXƒg
+
+	//ãƒœã‚¿ãƒ³å‡¦ç†
+	const bhome = document.getElementById('home');
+	bhome.addEventListener('click', function(){
+		window.location.href = '../index.html';
+	}, false);
+	const bprf = document.getElementById('prf');
+	bprf.addEventListener('click', function(){
+		window.location.href = '../profile/profile.html';
+	}, false);
+	const bapp = document.getElementById('app');
+	bapp.addEventListener('click', function(){
+		window.location.href = '/apps.html';
+	}, false);
+	const bmdl = document.getElementById('mdl');
+	bmdl.addEventListener('click', function(){
+		window.location.href = '../models/models.html';
+	}, false);
+	const bcnt = document.getElementById('cnt');
+	bcnt.addEventListener('click', function(){
+		window.location.href = '../contact/contact.html';
+	}, false);
+
+	//ãƒ¬ã‚¤ã‚­ãƒ£ã‚¹ãƒˆ
 	window.addEventListener('click', function(e){
 		mouse.x = (e.clientX / width)*2-1;
 		mouse.y = - (e.clientY / height)*2+1;
 		raycaster.setFromCamera(mouse, camera);
 		var intersects = raycaster.intersectObjects(scene.children);
 		if(intersects.length > 0){
-			//‚Ô‚Â‚©‚Á‚½‚à‚Ì‚Íintersects“à
+			//ã¶ã¤ã‹ã£ãŸã‚‚ã®ã¯intersectså†…
 			if(intersects[0].object.name == "bunboguFight"){
-					window.location.href = 'BunboguFight!!!_webgl/index.html';
+					window.location.href = '../BunboguFight!!!_webgl/index.html';
 			}
 			if(intersects[0].object.name == "gassaku"){
-					window.location.href = 'gassaku_webgl/index.html';
+					window.location.href = '../gassaku_webgl/index.html';
 			}
 		}
 

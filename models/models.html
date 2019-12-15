@@ -1,22 +1,27 @@
-﻿?<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<p>MODELS</p>
+	<link rel="stylesheet" href="models.css" type="text/css">
+	<button class="home" id="home">Atsushi Okamoto Portfolio</button>
+	<button class="tab" id="cnt">contact</button>
+	<button class="now" id="mdl">models</button>
+	<button class="tab" id="app">apps</button>
+	<button class="tab" id="prf">Profile</button>
 </head>
 <body>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.js"></script>
-	<script src="js/Detector.js"></script>
+	<script src="../js/Detector.js"></script>
 	<script src="models.js" charset="UTF-8"></script>
-	<script src="js/loaders/VRMLoader.js"></script>
-	<script src="js/loaders/GLTFLoader.js"></script>
-	<script src="js/controls/OrbitControls.js"></script>
+	<script src="../js/loaders/VRMLoader.js"></script>
+	<script src="../js/loaders/GLTFLoader.js"></script>
+	<script src="../js/controls/OrbitControls.js"></script>
 	<canvas id="myCanvas"></canvas>
 
-	<button id="Uchi"><font size="5">Uchi</font></button>
-	<button id="SugumiVoxel"><font size="5">Sugumi_Voxel</font></button>
-	<button id="SugumiVroid"><font size="5">Sugumi_Vroid</font></button>
-	<div id="textArea">Push Botton to Road a Model</div>
+	<button class="bmodels" id="Uchi">Uchi</button>
+	<button class="bmodels"id="SugumiVoxel">Sugumi_Voxel</button>
+	<button class="bmodels"id="SugumiVroid">Sugumi_Vroid</button>
+	<div class="text"id="textArea">Push Botton to Road a Model</div>
 </body>
 </html>

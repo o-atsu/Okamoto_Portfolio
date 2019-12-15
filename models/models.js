@@ -36,6 +36,27 @@ function init(){
 	}
 
 	//ボタン処理
+	const bhome = document.getElementById('home');
+	bhome.addEventListener('click', function(){
+		window.location.href = '../index.html';
+	}, false);
+	const bprf = document.getElementById('prf');
+	bprf.addEventListener('click', function(){
+		window.location.href = '../profile/profile.html';
+	}, false);
+	const bapp = document.getElementById('app');
+	bapp.addEventListener('click', function(){
+		window.location.href = '../apps/apps.html';
+	}, false);
+	const bmdl = document.getElementById('mdl');
+	bmdl.addEventListener('click', function(){
+		window.location.href = 'models.html';
+	}, false);
+	const bcnt = document.getElementById('cnt');
+	bcnt.addEventListener('click', function(){
+		window.location.href = '../contact/contact.html';
+	}, false);
+
 	var theremodel = false;
 	var btnUchi = document.getElementById('Uchi');
 	var btnSugumiVoxel = document.getElementById('SugumiVoxel');
@@ -45,8 +66,8 @@ function init(){
 	btnUchi.addEventListener('click', function(){
 		if(theremodel){ scene = new THREE.Scene();}
 		theremodel = true;
-		textArea.innerText = "Uchi\nMade with\nVRoid Studio\nPurpose\nVRoid Studioでモデルを作りたかったため\nAbout\nキャラデザは感情に任せました。スキルがほしい（切実）\n作り直そうかなぁ......"
-	loader.load( 'models/vrm/atsu.vrm', function ( vrm ) {
+		textArea.innerText = "Uchi\n使用ソフト:\tVroid Studio\nVroid Studio処女作. 初めは光沢や髪のメッシュの設定等で苦戦することが多かった. スカートをプロシージャルヘアーで作ろうかと模索したが, エクスポートがうまくいかなかったりした. ";
+	loader.load( 'vrm/atsu.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
 	vrm.scene.traverse( function ( object ) {
@@ -83,8 +104,8 @@ function init(){
 	btnSugumiVoxel.addEventListener('click', function(){
 		if(theremodel){ scene = new THREE.Scene();}
 		theremodel = true;
-		textArea.innerText = "Sugumi_Voxel\nくっそでけぇ、、、\nMade with\tMagicaVoxel(メッシュ), Blender(ボーン設定)\nPurpose\nVRChatで生活するため、また、ボーンの設定やってみたかった\nAbout\nこの娘作って気づいたんだが自分はローポリモデルが好きなんだなあ、みんなもボクセルモデル作ろう！\n"
-	loader.load( 'models/vrm/sugumi.vrm', function ( vrm ) {
+		textArea.innerText = "Sugumi_Voxel\n使用ソフト:\tMagicaVoxel\nMagicaVoxelを試しに使ってみた際に作ったモデル. ローポリモデルは好きだがこれは世界観に合わず使えないことが多い. 実はVroidモデルより制作時期が早い. ";
+	loader.load( 'vrm/sugumi.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
 	vrm.scene.traverse( function ( object ) {
@@ -121,8 +142,8 @@ function init(){
 	btnSugumiVroid.addEventListener('click', function(){
 		if(theremodel){ scene = new THREE.Scene();}
 		theremodel = true;
-		textArea.innerText = "Sugumi_vroid\nMade with\tVroid Studio\nPurpose\nVRアプリ開発のテストに使うため、また、バーチャル住人の姿\nAbout\n新キャラを作りたかったがデザインが思いつかずボクセルモデルをもとにした。まあ使い分けができてちょうどよいのでは\n"
-	loader.load( 'models/vrm/Sugumi_vroid.vrm', function ( vrm ) {
+		textArea.innerText = "Sugumi_vroid\n使用ソフト:\tVroid Studio\nVroid Studioでモデルを制作したかったがキャラデザができなかった. よってVoxelモデルでできていたSugumiをVroidで制作することに...\n現在個人開発のテスト用でらんだむちゃんの次によく使われる. ";
+	loader.load( 'vrm/Sugumi_vroid.vrm', function ( vrm ) {
 	// VRMLoader doesn't support VRM Unlit extension yet so
 	// converting all materials to MeshBasicMaterial here as workaround so far.
 	vrm.scene.traverse( function ( object ) {
