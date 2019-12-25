@@ -27,18 +27,19 @@ function init() {
 	controls.center= new THREE.Vector3(0, 0, 0);
 	controls.enablePan = false;
 
-	//光源を生成
-	const directionalLight1 = new THREE.DirectionalLight(0xffffff);
-	directionalLight1.position.set(1, 1, 1);
-	scene.add(directionalLight1);
-	const directionalLight2 = new THREE.DirectionalLight(0xffffff);
-	directionalLight2.position.set(1, -1, -1);
-	scene.add(directionalLight2); 
 
 	// 正四面体生成
+	let shadermat = new THREE.ShaderMaterial({
+		vertexShader: document.getElementById('vshader').textContent,
+		fragmentShader: document.getElementById('fshader').textContent,
+		uniforms:{
+			time:{value:0.0},
+			resolution:{type:"v2", value: new THREE.Vector2(width, height)}
+		}
+	});
 	const tetra = new THREE.Mesh(
 		new THREE.TetrahedronGeometry(300),
-		new THREE.MeshPhongMaterial({color:0x6699ff})
+		shadermat
 	);
 	const face1 = new THREE.Vector3(1, -1, 1).normalize();//正四面体の法線単位ベクトル
 	const face2 = new THREE.Vector3(-1, 1, 1).normalize();
@@ -156,6 +157,8 @@ function init() {
 		// レンダリング
 		renderer.render(scene, camera);
 		requestAnimationFrame(tick);
+		
+		shadermat.uniforms.time.value = performance.now()/1000;
 	}
 	tick();
 }
