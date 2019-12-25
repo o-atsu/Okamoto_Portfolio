@@ -10,7 +10,7 @@ function init() {
 	}, false);
 	const bprf = document.getElementById('prf');
 	bprf.addEventListener('click', function(){
-		window.location.href = 'profile.html';
+		window.location.href = '../profile/profile.html';
 	}, false);
 	const bapp = document.getElementById('app');
 	bapp.addEventListener('click', function(){
@@ -22,7 +22,7 @@ function init() {
 	}, false);
 	const bcnt = document.getElementById('cnt');
 	bcnt.addEventListener('click', function(){
-		window.location.href = '../contact/contact.html';
+		window.location.href = 'contact.html';
 	}, false);
 }
 
